@@ -18,6 +18,7 @@ resource "aws_elastic_beanstalk_application" "default" {
 module "beanstalk-web-app" {
   source = "github.com/carloan4u/terraform-aws-beanstalk-environment-module?ref=v1.0.2"
   app_name = "${aws_elastic_beanstalk_application.default.name}"
+  instance_type = "t2.medium"
   app_environment = "qa"
   asg_min_instances = 1
   asg_max_instances = 2
