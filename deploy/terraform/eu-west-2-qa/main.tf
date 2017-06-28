@@ -16,7 +16,7 @@ resource "aws_elastic_beanstalk_application" "default" {
 }
 
 module "beanstalk-web-app" {
-  source = "../../../terraform-aws-beanstalk-environment-module"
+  source = "github.com/carloan4u/terraform-aws-beanstalk-environment-module?ref=v1.0.1"
   app_name = "${aws_elastic_beanstalk_application.default.name}"
   app_environment = "qa"
   asg_min_instances = 1
