@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<parameters>
-  <parameter name="InstrumentationKey" description="ApplicationInsights Instrumentation Key">
-    <parameterEntry kind="XmlFile" scope="\\ApplicationInsights.config$" match="//*[local-name()='InstrumentationKey' and namespace-uri()='http://schemas.microsoft.com/ApplicationInsights/2013/Settings']/text()" defaultValue="blah" />
-  </parameter>
-</parameters>
