@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <parameters>
-  <parameter name="Environment" description="Deployment Environment">
-    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Environment']/@value" />
+  <parameter name="environment" description="Deployment Environment">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='environment']/@value" />
   </parameter>
   <parameter name="InstrumentationKey" description="ApplicationInsights Instrumentation Key">
     <parameterEntry kind="XmlFile" scope="\\ApplicationInsights.config$" match="//*[local-name()='InstrumentationKey' and namespace-uri()='http://schemas.microsoft.com/ApplicationInsights/2013/Settings']/text()" />
