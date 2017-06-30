@@ -16,4 +16,7 @@ module "beanstalk-web-app" {
   app_environment = "prod"
   asg_min_instances = 1
   asg_max_instances = 3
+  extra_tags = {
+      Environment = "prod"
+  }
 }

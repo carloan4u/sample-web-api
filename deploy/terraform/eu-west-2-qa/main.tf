@@ -22,4 +22,7 @@ module "beanstalk-web-app" {
   app_environment = "qa"
   asg_min_instances = 1
   asg_max_instances = 2
+  extra_tags = {
+      Environment = "qa"
+  }
 }
