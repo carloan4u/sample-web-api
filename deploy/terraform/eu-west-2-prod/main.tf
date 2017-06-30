@@ -11,8 +11,9 @@ provider "aws" {
 }
 
 module "beanstalk-web-app" {
-  source = "github.com/carloan4u/terraform-aws-beanstalk-environment-module?ref=v1.0.1"
+  source = "github.com/carloan4u/terraform-aws-beanstalk-environment-module?ref=v1.0.2"
   app_name = "sample-web-api"
+  instance_type = "t2.medium"
   app_environment = "prod"
   asg_min_instances = 1
   asg_max_instances = 3
