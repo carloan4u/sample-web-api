@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "deployments": {
+    "custom": [{
+      "name": "eb-web-application",
+      "scripts": {
+        "install": {
+          "file": "install.ps1"
+        },
+        "restart": {
+          "file": "restart.ps1"
+        },
+        "uninstall": {
+          "file": "uninstall.ps1"
+        }
+      }
+    }]
+  }
+}

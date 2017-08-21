@@ -1,0 +1,4 @@
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/" />
+  <setParameter name="Environment" value="QA" />
+</parameters>
