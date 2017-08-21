@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Net;
 using System.Web.Http;
 
 namespace sample_website.Controllers
@@ -10,8 +9,10 @@ namespace sample_website.Controllers
         {
             return new
             {
-                Status = ConfigurationManager.AppSettings["Environment"]
+                Status = "OK"
             };
+
+//            return StatusCode(HttpStatusCode.InternalServerError);
         }
     }
 }
