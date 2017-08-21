@@ -13,7 +13,7 @@ var target = Argument("target", "Default");
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
 
-var webProjectName = "Zuto.Application.Routing.Api";
+var webProjectName = "sample-web-api";
 var appName = EnvironmentVariable("app_name") ?? webProjectName;
 var goPipelineLabel = EnvironmentVariable("GO_PIPELINE_LABEL") ?? "UNKNOWN";
 
