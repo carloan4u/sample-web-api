@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="Environment" value="PROD" />
+  <setParameter name="InstrumentationKey" value="4ab1db46-e7af-41ec-a07d-acf949132463" />
+  <setParameter name="RoutingServiceDatabase" value="{DBConnectionString}" />
+  <setParameter name="ExpSvcApiUrl" value="http://hor-live-app1:9001" />
+  <setParameter name="ExpSvcAuthValue" value="F07C2D20-A8A0-47BB-AC7B-C913F85B1394" />
+  <setParameter name="ExpSvcTestingLocally" value="false" />
+</parameters>
