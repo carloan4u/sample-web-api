@@ -9,16 +9,8 @@ namespace sample_website.Controllers
         {
             return new
             {
-                Status = "OK"
+                Status = HttpStatusCode.OK
             };
-        }
-    }
-
-    public class FailStatusController : ApiController
-    {
-        public dynamic Get()
-        {
-            return StatusCode(HttpStatusCode.InternalServerError);
         }
     }
 }
