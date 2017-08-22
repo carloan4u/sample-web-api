@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "zuto-terraform-state-files"
-    key    = "services/routing-service-prod.tfstate"
+    key    = "services/sample-test-app/prod.tfstate"
     region = "eu-west-2"
   }
 }
@@ -17,8 +17,8 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "routing-service"
-  description = "Loan application routing service"
+  name        = "sample-test-app"
+  description = "Sample Application used for AWS workshop"
 }
 
 module "beanstalk-web-app" {
