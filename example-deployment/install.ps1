@@ -11,6 +11,7 @@ $environment = Get-Ec2-Tag("Environment")
 $buildPackagePath = "$PSScriptRoot/sample-website-api.zip"
 $parametersFilePath = "$PSScriptRoot/config/set-parameters-$environment.xml"
 
+& C:\Windows\System32\iisreset.exe /stop
 & Msdeploy.exe -verb:sync -source:package=$buildPackagePath -dest:auto -setParamFile:$parametersFilePath
 & C:\Windows\System32\iisreset.exe /start
 
