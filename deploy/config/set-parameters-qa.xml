@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <setParameter name="Environment" value="QA" />
-  <setParameter name="InstrumentationKey" value="37ab0b2a-b5dc-428c-b72b-797e036e6318" />
-  <setParameter name="RoutingServiceDatabase" value="{DBConnectionString}" />
-  <setParameter name="ExpSvcApiUrl" value="http://horizon-qa-app:9001" />
-  <setParameter name="ExpSvcAuthValue" value="8B276E3B-C675-4E62-BD79-AE33BF2D2A25" />
-  <setParameter name="ExpSvcTestingLocally" value="false" />
+  <setParameter name="InstrumentationKey" value="6be68857-6611-4c1f-8daf-b0d747f086a0" />
 </parameters>
