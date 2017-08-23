@@ -84,6 +84,7 @@ Task("TransformProdConfig")
     .Does(() =>
 {
     var secretConfigItem = EnvironmentVariable("Live-secretConfigItem") ??  "UNKNOWN";
+    
     TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {
       { "parameters/setParameter[@name='SecretConfigItem']/@value", secretConfigItem }
   });
