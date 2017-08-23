@@ -76,7 +76,7 @@ Task("TransformQaConfig")
     var qaDBConnString = EnvironmentVariable("QA_DB_CONN_STRING") ??  "UNKNOWN";
 
     TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {
-        { "parameters/setParameter[@name='RoutingServiceDatabase']/@value", qaDBConnString }
+        {  }
     });
 });
 
@@ -86,7 +86,7 @@ Task("TransformProdConfig")
     var liveDBConnString = EnvironmentVariable("LIVE_DB_CONN_STRING") ??  "UNKNOWN";
 
     TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {
-        { "parameters/setParameter[@name='RoutingServiceDatabase']/@value", liveDBConnString }
+        {  }
     });
 });
 
