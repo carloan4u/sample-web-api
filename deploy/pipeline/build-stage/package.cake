@@ -73,17 +73,16 @@ Task("Upload-Deployment-Scripts")
 Task("TransformQaConfig")
     .Does(() =>
 {
-    var qaDBConnString = EnvironmentVariable("QA_DB_CONN_STRING") ??  "UNKNOWN";
-
-    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {});
+    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {
+  });
 });
 
 Task("TransformProdConfig")
     .Does(() =>
 {
-    var liveDBConnString = EnvironmentVariable("LIVE_DB_CONN_STRING") ??  "UNKNOWN";
 
-    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {});
+    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {
+  });
 });
 
 //////////////////////////////////////////////////////////////////////
