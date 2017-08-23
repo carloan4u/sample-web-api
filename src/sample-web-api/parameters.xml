@@ -3,12 +3,6 @@
   <parameter name="Environment" description="Deployment Environment">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Environment']/@value" />
   </parameter>
-  <parameter name="SampleConfigItem" description="A config item to prove how it works">
-    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SampleConfigItem']/@value" />
-  </parameter>
-  <parameter name="SecretConfigItem" description="A secret config item to prove how it works">
-    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SecretConfigItem']/@value" />
-  </parameter>
   <parameter name="InstrumentationKey" description="ApplicationInsights Instrumentation Key">
     <parameterEntry kind="XmlFile" scope="\\ApplicationInsights.config$" match="//*[local-name()='InstrumentationKey' and namespace-uri()='http://schemas.microsoft.com/ApplicationInsights/2013/Settings']/text()" />
   </parameter>
