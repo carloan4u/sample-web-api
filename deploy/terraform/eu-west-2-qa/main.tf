@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "zuto-terraform-state-files"
+    bucket = "workshop-zuto-terraform-state-files"
     key    = "services/sample-test-app/qa.tfstate"
     region = "eu-west-2"
   }

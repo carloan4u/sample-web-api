@@ -48,12 +48,11 @@ Task("Create-Deployment-Scripts-Package")
     .Does(() =>
 {
     Zip("deploy/terraform", buildDir + "/terraform.zip");
-    Zip("database", buildDir + "/database.zip");
 });
 
 var s3UploadSettings = Context.CreateUploadSettings();
 s3UploadSettings.Region = RegionEndpoint.EUWest2;
-s3UploadSettings.BucketName = "zuto-build-artifacts";
+s3UploadSettings.BucketName = "wprkshop-zuto-build-artifacts";
 
 Task("Upload-Deployment-Package")
     .IsDependentOn("Create-Deployment-Package")
@@ -67,7 +66,6 @@ Task("Upload-Deployment-Scripts")
     .Does(() =>
 {
     S3Upload(buildDir + "/terraform.zip", s3Path + "/terraform.zip", s3UploadSettings);
-    S3Upload(buildDir + "/database.zip", s3Path + "/database.zip", s3UploadSettings);
 });
 
 Task("TransformQaConfig")
@@ -84,7 +82,7 @@ Task("TransformProdConfig")
     .Does(() =>
 {
     var secretConfigItem = EnvironmentVariable("Live-secretConfigItem") ??  "UNKNOWN";
-    
+
     TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {
       { "parameters/setParameter[@name='SecretConfigItem']/@value", secretConfigItem }
   });
