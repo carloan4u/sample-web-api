@@ -52,7 +52,7 @@ Task("Create-Deployment-Scripts-Package")
 
 var s3UploadSettings = Context.CreateUploadSettings();
 s3UploadSettings.Region = RegionEndpoint.EUWest2;
-s3UploadSettings.BucketName = "workshop-zuto-build-artifacts";
+s3UploadSettings.BucketName = "zuto-build-artifacts";
 
 Task("Upload-Deployment-Package")
     .IsDependentOn("Create-Deployment-Package")
