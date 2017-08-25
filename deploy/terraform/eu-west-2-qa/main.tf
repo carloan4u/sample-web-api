@@ -3,6 +3,7 @@ terraform {
     bucket = "zuto-terraform-state-files"
     key    = "services/sample-test-app/qa.tfstate"
     region = "eu-west-2"
+    acl    = "bucket-owner-full-control"
   }
 }
 
