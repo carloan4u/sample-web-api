@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Web.Http;
 
 namespace sample_website.Controllers
@@ -7,10 +8,7 @@ namespace sample_website.Controllers
     {
         public dynamic Get()
         {
-            return new
-            {
-                Status = HttpStatusCode.InternalServerError
-            };
+            throw new Exception();
         }
     }
 }
