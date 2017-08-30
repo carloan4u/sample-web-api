@@ -68,16 +68,20 @@ Task("Upload-Deployment-Scripts")
     S3Upload(buildDir + "/terraform.zip", s3Path + "/terraform.zip", s3UploadSettings);
 });
 
-Task("TransformQaConfig")
-    .Does(() =>
-{
-    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  });
-});
-
 Task("TransformProdConfig")
     .Does(() =>
 {
     TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {  });
+});
+
+Task("TransformQaConfig")
+    .Does(() =>
+{
+    var secretConfigItem = EnvironmentVariable("QA-SecureVariable") ??  "UNKNOWN";
+
+   TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {
+        { "parameters/setParameter[@name='SecureVariable']/@value", secretConfigItem }
+    });
 });
 
 //////////////////////////////////////////////////////////////////////
