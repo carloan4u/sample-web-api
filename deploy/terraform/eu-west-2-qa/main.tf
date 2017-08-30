@@ -18,7 +18,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "dave-mason-web-api"
+  name        = "dave-mason-sample-web-api"
   description = "Dave Mason Sample Web API"
 }
 
