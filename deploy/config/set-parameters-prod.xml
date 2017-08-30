@@ -3,4 +3,5 @@
   <setParameter name="Environment" value="PROD" />
   <setParameter name="SampleConfigItem" value="Foo-PROD" />
   <setParameter name="InstrumentationKey" value="6be68857-6611-4c1f-8daf-b0d747f086a0" />
+  <setParameter name="LiamsVariable" value="liams-var-prod" />  
 </parameters>
