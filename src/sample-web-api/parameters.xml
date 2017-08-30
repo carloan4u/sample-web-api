@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <parameters>
-  <parameter name="TestVariable" description="Variable to show values being updated on deployment">
-    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='TestVariable']/@value" />
+  <parameter name="CraigSetting" description="Variable to show values being updated on deployment">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='CraigSetting']/@value" />
   </parameter>
 </parameters>
