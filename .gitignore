@@ -295,3 +295,5 @@ __pycache__/
 # Module directory
 .terraform/
 TestResults.nunit.xml
+dist/
+pennington.zip
