@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "zuto-terraform-state-files"
-    key    = "services/jordan-app-service-qa.tfstate"
+    key    = "services/jordan-app-qa.tfstate"
     region = "eu-west-2"
     acl    = "bucket-owner-full-control"
   }
