@@ -1,13 +1,33 @@
+#tool "nuget:?package=NUnit.ConsoleRunner"
+
 var target = Argument("target", "Default");
 Environment.CurrentDirectory = Directory("../../../");
 
-Task("Restore-NuGet-Packages")
+const string restoreNugetTask = "Restore-NuGet-Packages";
+const string buildTask = "Build";
+const string testTask = "Test";
+const string path = "sample-web-api.sln";
+
+Task(restoreNugetTask)
    .Does(() =>
 {
-   NuGetRestore("sample-web-api.sln");
+   NuGetRestore(path);
+});
+
+Task(buildTask)
+  .IsDependentOn(restoreNugetTask)
+  .Does(()=> 
+{
+  MSBuild(path);
+});
+
+Task(testTask)
+  .IsDependentOn(buildTask)
+  .Does(()=> 
+{
+  NUnit3("test/sample-web-api-test/bin/Debug/sample-web-api-test.dll");
 });
 
 Task("Default")
-  .IsDependentOn("Restore-NuGet-Packages");
-
+  .IsDependentOn(testTask);
 RunTarget(target);
