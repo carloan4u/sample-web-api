@@ -81,7 +81,11 @@ Task("TransformQaConfig")
 Task("TransformProdConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {  });
+    var secretConfigItem = EnvironmentVariable("LiamsOtherVariable") ??  "UNKNOWN";
+
+    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {
+            { "parameters/setParameter[@name='LiamsOtherVariable']/@value", secretConfigItem }
+    });
 });
 
 //////////////////////////////////////////////////////////////////////
