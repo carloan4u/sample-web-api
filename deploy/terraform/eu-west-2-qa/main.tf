@@ -32,6 +32,7 @@ module "beanstalk-web-app" {
   ec2_key           = "qa-ec2-applications"
   create_dns_record = true
   owner_tag         = "jordan"
+  healthcheck_url = "/api/status"
 
   sns_topic = {
     name = "${aws_elastic_beanstalk_application.default.name}-${var.environment}"
