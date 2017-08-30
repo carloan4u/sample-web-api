@@ -11,7 +11,8 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                TestVariable= ConfigurationManager.AppSettings["TestVariable"]
+                TestVariable= ConfigurationManager.AppSettings["TestVariable"],
+                SecureVariable =ConfigurationManager.AppSettings["SecureTestVariable"]
             };
         }
     }
