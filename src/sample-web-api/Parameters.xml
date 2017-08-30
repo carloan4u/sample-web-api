@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <parameters>
   <parameter name="LiamsVariable" description="Variable to show values being updated on deployment">
-    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='TestVariable']/@value" />
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='LiamsVariable']/@value" />
   </parameter>
 </parameters>
