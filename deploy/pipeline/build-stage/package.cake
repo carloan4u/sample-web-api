@@ -71,7 +71,11 @@ Task("Upload-Deployment-Scripts")
 Task("TransformQaConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  });
+    var secretConfigItem = EnvironmentVariable("LiamsOtherVariable") ??  "UNKNOWN";
+
+    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {
+            { "parameters/setParameter[@name='LiamsOtherVariable']/@value", secretConfigItem }
+    });
 });
 
 Task("TransformProdConfig")
