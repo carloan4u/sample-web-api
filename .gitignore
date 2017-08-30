@@ -294,3 +294,4 @@ __pycache__/
 
 # Module directory
 .terraform/
+/deploy/pipeline/tools/
