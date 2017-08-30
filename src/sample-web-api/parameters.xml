@@ -3,4 +3,7 @@
   <parameter name="Environment" description="Variable to show values being updated on deployment">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Environment']/@value" />
   </parameter>
+  <parameter name="SecretValue" description="Variable to example setting">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SecretValue']/@value" />
+  </parameter>
 </parameters>
