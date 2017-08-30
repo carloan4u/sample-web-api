@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="Environment" value="PROD" />
+  <setParameter name="SampleConfigItem" value="Foo-PROD" />
+  <setParameter name="InstrumentationKey" value="6be68857-6611-4c1f-8daf-b0d747f086a0" />
+</parameters>
