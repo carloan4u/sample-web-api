@@ -1,31 +1,71 @@
-#tool "nuget:?package=NUnit.ConsoleRunner"
+#tool nuget:?package=NUnit.ConsoleRunner
 
-var target = Argument("target", "Default");
 Environment.CurrentDirectory = Directory("../../../");
 
+//////////////////////////////////////////////////////////////////////
+// ARGUMENTS
+//////////////////////////////////////////////////////////////////////
+
+var target = Argument("target", "Default");
+var configuration = Argument("configuration", "Release");
+
+//////////////////////////////////////////////////////////////////////
+// PREPARATION
+//////////////////////////////////////////////////////////////////////
+
+// Define directories.
+var buildDir = MakeAbsolute(Directory("build"));
+var buildBinDir = buildDir + Directory("/bin");
 var solutionPath = "sample-web-api.sln";
 
-Task("Restore-NuGet-Packages")
-   .Does(() =>
+//////////////////////////////////////////////////////////////////////
+// TASKS
+//////////////////////////////////////////////////////////////////////
+
+Task("Clean")
+    .Does(() =>
 {
-   NuGetRestore(solutionPath);
+    CleanDirectory(buildDir);
 });
 
-Task("Default")
-  .IsDependentOn("RunTests");
+Task("Restore-NuGet-Packages")
+    .IsDependentOn("Clean")
+    .Does(() =>
+{
+    NuGetRestore(solutionPath);
+});
 
 Task("Build")
     .IsDependentOn("Restore-NuGet-Packages")
-    .Does(() => {
-        MSBuild(solutionPath);
-    });
+    .Does(() =>
+{
+      MSBuild(solutionPath, settings =>
+        settings.SetConfiguration(configuration)
+          .SetVerbosity(Verbosity.Minimal)
+          .WithProperty("OutputPath", "\"" + buildBinDir + "\"")
+          .WithProperty("DeployOnBuild", "True")
+          .WithProperty("AutoParameterizationWebConfigConnectionStrings", "false")
+          .WithProperty("DeployIISAppPath", "\"Default Web Site/\""));
+});
 
-Task("RunTests")
+Task("Run-Unit-Tests")
     .IsDependentOn("Build")
-    .Does(() => {
-        var testAssemblyPath = "test/sample-web-api-test/bin/Debug/sample-web-api-test.dll";
-        var testAssemblies = GetFiles(testAssemblyPath);
-        NUnit3(testAssemblies);
-    });
-    
+    .Does(() =>
+{
+   NUnit3(buildBinDir +  "/*-test.dll", new NUnit3Settings {
+        Results = "TestResults.nunit.xml"
+      });
+});
+
+//////////////////////////////////////////////////////////////////////
+// TASK TARGETS
+//////////////////////////////////////////////////////////////////////
+
+Task("Default")
+    .IsDependentOn("Run-Unit-Tests");
+
+//////////////////////////////////////////////////////////////////////
+// EXECUTION
+//////////////////////////////////////////////////////////////////////
+
 RunTarget(target);

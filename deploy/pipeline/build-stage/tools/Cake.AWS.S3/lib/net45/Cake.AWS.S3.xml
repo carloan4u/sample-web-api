@@ -1,0 +1,1163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cake.AWS.S3</name>
+    </assembly>
+    <members>
+        <member name="T:Cake.AWS.S3.S3Aliases">
+            <summary>
+             Contains Cake aliases for configuring Amazon Simple Storage Service
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Sync(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified directory to Amazon S3, checking the modified date of the local fiels with existing S3Objects.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="dirPath">The directory path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>A list of keys that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3SyncUpload(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified file to Amazon S3, checking the modified date of the local file with a existing S3Object and uploads it if its changes.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>AThe key that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3SyncUpload(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified directory to Amazon S3, checking the modified date of the local files with existing S3Objects and uploading them if its changes.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="dirPath">The directory path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>A list of keys that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3SyncDownload(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+             Syncs the specified file from Amazon S3, checking the modified date of the local file with a existing S3Object and downloads it if its changed.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>The key that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3SyncDownload(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+             Syncs the specified directory from Amazon S3, checking the modified date of the local files with existing S3Objects and downloading them if its changed.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="dirPath">The directory path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>A list of keys that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Upload(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the specified file. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Upload(Cake.Core.ICakeContext,System.IO.Stream,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the contents of the specified stream. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="stream">The stream to read to obtain the content to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Download(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Downloads the content from Amazon S3 and writes it to the specified file.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Download(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Downloads the content from Amazon S3 and writes it to the specified file.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Open(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Opens a stream of the content from Amazon S3.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Open(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Opens a stream of the content from Amazon S3.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3Bytes(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Get the byte array of a S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3Bytes(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Get the byte array of a S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3String(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Get the string of a S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3String(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Get the string of a S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Delete(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes the null version (if there is one) of an object and inserts a delete
+            marker, which becomes the latest version of the object. If there isn't a null
+            version, Amazon S3 does not remove any objects.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3Delete(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes the null version (if there is one) of an object and inserts a delete
+            marker, which becomes the latest version of the object. If there isn't a null
+            version, Amazon S3 does not remove any objects.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3DeleteAll(Cake.Core.ICakeContext,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes all objects from the bucket
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to delete from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3DeleteAll(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes all objects from the bucket
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="prefix">Only delete objects that begin with the specified prefix.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to delete from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3DeleteAll(Cake.Core.ICakeContext,System.String,System.DateTimeOffset,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes all objects from the bucket
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="prefix">Only delete objects that begin with the specified prefix.</param>
+            <param name="lastModified">Only delete objects that where modified prior to this date</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to delete from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3Object(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Retrieves object from Amazon S3.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3Object(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Retrieves object from Amazon S3.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3Objects(Cake.Core.ICakeContext,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Returns all the objects in a S3 bucket.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetS3Objects(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Returns all the objects in a S3 bucket.
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="prefix">Limits the response to keys that begin with the specified prefix.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3LastModified(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Gets the last modified date of an S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3LastModified(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Gets the last modified date of an S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3GetETag(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Gets the ETag of an S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to access Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3GetETag(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Gets the ETag of an S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to access Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3GetHashTag(Cake.Core.ICakeContext,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Gets the ETag of an S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to access Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.S3GetHashTag(Cake.Core.ICakeContext,System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Gets the ETag of an S3 object
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to access Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetFileHash(Cake.Core.ICakeContext,Cake.Core.IO.FilePath)">
+            <summary>
+            Gets the hash of a file
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="path">The path to the file to calulate the hash from.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GenerateEncryptionKey(Cake.Core.ICakeContext,Cake.Core.IO.FilePath)">
+            <summary>
+            Generates a base64-encoded encryption key for Amazon S3 to use to encrypt / decrypt objects
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path to store the key in.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GenerateEncryptionKey(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.Int32)">
+            <summary>
+            Generates a base64-encoded encryption key for Amazon S3 to use to encrypt / decrypt objects
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="filePath">The file path to store the key in.</param>
+            <param name="size">The size in bits of the secret key used by the symmetric algorithm</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetPreSignedURL(Cake.Core.ICakeContext,System.String,System.DateTime,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Create a signed URL allowing access to a resource that would usually require authentication. cts
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="expires">The expiry date and time for the pre-signed url. </param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Aliases.GetPreSignedURL(Cake.Core.ICakeContext,System.String,System.String,System.DateTime,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Create a signed URL allowing access to a resource that would usually require authentication. cts
+            </summary>
+            <param name="context">The cake context.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="expires">The expiry date and time for the pre-signed url. </param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="T:Cake.AWS.S3.CakeContextExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.Core.ICakeContext" />.
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.CakeContextExtensions.CreateDownloadSettings(Cake.Core.ICakeContext)">
+            <summary>
+            Helper method to get the AWS Credentials from environment variables
+            </summary>
+            <param name="context">The cake context.</param>
+            <returns>A new <see cref="T:Cake.AWS.S3.DownloadSettings"/> instance to be used in calls to the <see cref="T:Cake.AWS.S3.IS3Manager"/>.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.CakeContextExtensions.CreateUploadSettings(Cake.Core.ICakeContext)">
+            <summary>
+            Helper method to get the AWS Credentials from environment variables
+            </summary>
+            <param name="context">The cake context.</param>
+            <returns>A new <see cref="T:Cake.AWS.S3.DownloadSettings"/> instance to be used in calls to the <see cref="T:Cake.AWS.S3.IS3Manager"/>.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.CakeContextExtensions.CreateSyncSettings(Cake.Core.ICakeContext)">
+            <summary>
+            Helper method to get the AWS Credentials from environment variables
+            </summary>
+            <param name="context">The cake context.</param>
+            <returns>A new <see cref="T:Cake.AWS.S3.SyncSettings"/> instance to be used in calls to the <see cref="T:Cake.AWS.S3.IS3Manager"/>.</returns>
+        </member>
+        <member name="T:Cake.AWS.S3.CakeEnvironmentExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.Core.ICakeEnvironment" />.
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.CakeEnvironmentExtensions.SetSettings``1(Cake.Core.ICakeEnvironment,``0)">
+            <summary>
+            Helper method to get the AWS Credentials from environment variables
+            </summary>
+            <param name="environment">The cake environment.</param>
+            <param name="settings">The S3 settings.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.CakeEnvironmentExtensions.CreateDownloadSettings(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Helper method to get the AWS Credentials from environment variables
+            </summary>
+            <param name="environment">The cake environment.</param>
+            <returns>A new <see cref="T:Cake.AWS.S3.DownloadSettings"/> instance to be used in calls to the <see cref="T:Cake.AWS.S3.IS3Manager"/>.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.CakeEnvironmentExtensions.CreateUploadSettings(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Helper method to get the AWS Credentials from environment variables
+            </summary>
+            <param name="environment">The cake environment.</param>
+            <returns>A new <see cref="T:Cake.AWS.S3.UploadSettings"/> instance to be used in calls to the <see cref="T:Cake.AWS.S3.IS3Manager"/>.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.CakeEnvironmentExtensions.CreateSyncSettings(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Helper method to get the AWS Credentials from environment variables
+            </summary>
+            <param name="environment">The cake environment.</param>
+            <returns>A new <see cref="T:Cake.AWS.S3.SyncSettings"/> instance to be used in calls to the <see cref="T:Cake.AWS.S3.IS3Manager"/>.</returns>
+        </member>
+        <member name="T:Cake.AWS.S3.SyncSettingsExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.AWS.S3.SyncSettings" />.
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.SyncSettingsExtensions.SetSearchFilter(Cake.AWS.S3.SyncSettings,System.String)">
+            <summary>
+            Specifies the filter to use when searching for files.
+            </summary>
+            <param name="settings">The sync settings.</param>
+            <param name="filter">The filter.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.SyncSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.SyncSettingsExtensions.SetSearchScope(Cake.AWS.S3.SyncSettings,Cake.Core.IO.SearchScope)">
+            <summary>
+            Specifies the scope to use when searching for files.
+            </summary>
+            <param name="settings">The sync settings.</param>
+            <param name="scope">The scope.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.SyncSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.SyncSettingsExtensions.SetLowerPaths(Cake.AWS.S3.SyncSettings,System.Boolean)">
+            <summary>
+            Lower the file paths when generating S3 keys
+            </summary>
+            <param name="settings">The sync settings.</param>
+            <param name="lowerPaths">lower file paths.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.SyncSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.SyncSettingsExtensions.SetKeyPrefix(Cake.AWS.S3.SyncSettings,System.String)">
+            <summary>
+            The prefix to use when generating S3 keys
+            </summary>
+            <param name="settings">The sync settings.</param>
+            <param name="keyPrefix">the key prefix.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.SyncSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.SyncSettingsExtensions.SetModifiedCheck(Cake.AWS.S3.SyncSettings,Cake.AWS.S3.ModifiedCheck)">
+            <summary>
+            The prefix to use when generating S3 keys
+            </summary>
+            <param name="settings">The sync settings.</param>
+            <param name="modifiedCheck">the modified check.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.SyncSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cake.AWS.S3.UploadSettingsExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.AWS.S3.UploadSettings" />.
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettingsExtensions.SetCannedACL(Cake.AWS.S3.UploadSettings,Amazon.S3.S3CannedACL)">
+            <summary>
+            Specifies the ACL to be used for S3 Buckets or S3 Objects.
+            </summary>
+            <param name="settings">The upload settings.</param>
+            <param name="cannedACL">The canned ACL.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.UploadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettingsExtensions.SetCannedACL(Cake.AWS.S3.UploadSettings,System.String)">
+            <summary>
+            Specifies the ACL to be used for S3 Buckets or S3 Objects.
+            </summary>
+            <param name="settings">The upload settings.</param>
+            <param name="cannedACL">The canned ACL name.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.UploadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettingsExtensions.SetStorageClass(Cake.AWS.S3.UploadSettings,Amazon.S3.S3StorageClass)">
+            <summary>
+            Specifies the Storage Class of of an S3 object. Possible values are: ReducedRedundancy:
+             provides a 99.99% durability guarantee Standard: provides a 99.999999999% durability guarantee
+            </summary>
+            <param name="settings">The upload settings.</param>
+            <param name="storageClass">The storage class.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.UploadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettingsExtensions.SetStorageClass(Cake.AWS.S3.UploadSettings,System.String)">
+            <summary>
+            Specifies the Storage Class of of an S3 object. Possible values are: ReducedRedundancy:
+             provides a 99.99% durability guarantee Standard: provides a 99.999999999% durability guarantee
+            </summary>
+            <param name="settings">The upload settings.</param>
+            <param name="storageClass">The storage class.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.UploadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettingsExtensions.SetKeyManagementServiceKeyId(Cake.AWS.S3.UploadSettings,System.String)">
+            <summary>
+            The id of the AWS Key Management Service key that Amazon S3 should use to encrypt
+            and decrypt the object. If a key id is not specified, the default key will be
+            </summary>
+            <param name="settings">The upload settings.</param>
+            <param name="id">The id of the key tp use.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.UploadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettingsExtensions.SetGenerateContentType(Cake.AWS.S3.UploadSettings,System.Boolean)">
+            <summary>
+            Generate the ContentType based on the file extension
+            </summary>
+            <param name="settings">The sync settings.</param>
+            <param name="generateContentType">generate ContentType.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.UploadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettingsExtensions.SetGenerateETag(Cake.AWS.S3.UploadSettings,System.Boolean)">
+            <summary>
+            Generate an ETag based on the hash of the file
+            </summary>
+            <param name="settings">The sync settings.</param>
+            <param name="generateETag">generate ETag.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.UploadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cake.AWS.S3.DownloadSettingsExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.AWS.S3.DownloadSettings" />.
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.DownloadSettingsExtensions.SetModifiedDate(Cake.AWS.S3.DownloadSettings,System.DateTime)">
+            <summary>
+            Specifies the date the file was last modified
+            </summary>
+            <param name="settings">The Download settings.</param>
+            <param name="modifiedDate">The modified date.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.DownloadSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cake.AWS.S3.S3SettingsExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.AWS.S3.S3Settings" />.
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetAccessKey``1(``0,System.String)">
+            <summary>
+            Specifies the AWS Access Key to use as credentials.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="key">The AWS Access Key.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetSecretKey``1(``0,System.String)">
+            <summary>
+            Specifies the AWS Secret Key to use as credentials.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="key">The AWS Secret Access Key.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetRegion``1(``0,System.String)">
+            <summary>
+            Specifies the endpoints available to AWS clients.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="region">The endpoints available to AWS clients.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetRegion``1(``0,Amazon.RegionEndpoint)">
+            <summary>
+            Specifies the endpoints available to AWS clients.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="region">The endpoints available to AWS clients.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetBucketName``1(``0,System.String)">
+            <summary>
+            Specifies the name of the load balancer.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="name">The name of the S3 bucket.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetEncryptionMethod``1(``0,Amazon.S3.ServerSideEncryptionCustomerMethod)">
+            <summary>
+            Specifies the Server-side encryption algorithm to be used with the customer provided key.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="method">The Server-side encryption algorithm to be used with the customer provided key.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetEncryptionKey``1(``0,System.String)">
+            <summary>
+            The base64-encoded encryption key for Amazon S3 to use to decrypt the object
+                Using the encryption key you provide as part of your request Amazon S3 manages
+                both the encryption, as it writes to disks, and decryption, when you access your
+                objects. Therefore, you don't need to maintain any data encryption code. The
+                only thing you do is manage the encryption keys you provide.
+                When you retrieve an object, you must provide the same encryption key as part
+                of your request. Amazon S3 first verifies the encryption key you provided matches,
+                and then decrypts the object before returning the object data to you.
+                Important: Amazon S3 does not store the encryption key you provide.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="key">The base64-encoded encryption key for Amazon S3 to use to decrypt the object.</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3SettingsExtensions.SetEncryptionKeyMD5``1(``0,System.String)">
+            <summary>
+            The MD5 of the customer encryption key. The MD5 is base 64 encoded. This field is optional, 
+            the SDK will calculate the MD5 if this is not set.
+            </summary>
+            <param name="settings">The S3 settings.</param>
+            <param name="md5">The MD5 of the customer encryption key..</param>
+            <returns>The same <see cref="T:Cake.AWS.S3.S3Settings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cake.AWS.S3.SyncPath">
+            <summary>
+            A path to upload / download to / from S3
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.SyncPath.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.AWS.S3.SyncPath" /> class.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncPath.Path">
+            <summary>
+            The path to the file to sync
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncPath.Key">
+            <summary>
+            The key to store the S3 Objects under.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncPath.ETag">
+            <summary>
+            The ETag to use when uploading the file
+            </summary>
+        </member>
+        <member name="T:Cake.AWS.S3.ModifiedCheck">
+            <summary>
+            Represents how to check if a file has been modified
+            </summary>
+        </member>
+        <member name="F:Cake.AWS.S3.ModifiedCheck.Hash">
+            <summary>
+            By comparing the MD5 hash
+            </summary>
+        </member>
+        <member name="F:Cake.AWS.S3.ModifiedCheck.Date">
+            <summary>
+            By comparing the modified date
+            </summary>
+        </member>
+        <member name="T:Cake.AWS.S3.DownloadSettings">
+            <summary>
+            The settings to use with downlad requests to Amazon S3
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.DownloadSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.AWS.S3.DownloadSettings" /> class.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.DownloadSettings.ModifiedDate">
+            <summary>
+            The date the file was last modified
+            </summary>
+        </member>
+        <member name="T:Cake.AWS.S3.SyncSettings">
+            <summary>
+            The settings to use when syncing a folder to Amazon S3
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.SyncSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.AWS.S3.SyncSettings" /> class.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncSettings.SearchFilter">
+            <summary>
+            The filter to use when searching for files
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncSettings.SearchScope">
+            <summary>
+            The scope to use when searching for files
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncSettings.LowerPaths">
+            <summary>
+            Lower the file paths when generating S3 keys
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncSettings.KeyPrefix">
+            <summary>
+            The prefix to use when generating S3 keys
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.SyncSettings.ModifiedCheck">
+            <summary>
+            How to check if a file has been modified
+            </summary>
+        </member>
+        <member name="T:Cake.AWS.S3.UploadSettings">
+            <summary>
+            The settings to use with upload requests to Amazon S3
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.UploadSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.AWS.S3.UploadSettings" /> class.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.CannedACL">
+            <summary>
+            The ACL to be used for S3 Buckets or S3 Objects.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.StorageClass">
+            <summary>
+            Specifies the Storage Class of of an S3 object. Possible values are: ReducedRedundancy:
+            provides a 99.99% durability guarantee Standard: provides a 99.999999999% durability guarantee
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.KeyManagementServiceKeyId">
+            <summary>
+            The id of the AWS Key Management Service key that Amazon S3 should use to encrypt
+            and decrypt the object. If a key id is not specified, the default key will be
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.Headers">
+            <summary>
+            Used to set the http-headers for an S3 object.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.GenerateContentType">
+            <summary>
+            Generate the ContentType based on the file extension
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.DefaultContentType">
+            <summary>
+            Content type to use when no mime type is found
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.GenerateContentLength">
+            <summary>
+            Generate the ContentLength based on the file size in bytes
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.GenerateETag">
+            <summary>
+            Generate an ETag based on the hash of the file
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.GenerateHashTag">
+            <summary>
+            Generate a custom meta-data field based on the hash of the file
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.CompressContent">
+            <summary>
+            Gzip the content of css / js
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.CompressExtensions">
+            <summary>
+            List of file extensions to compress
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.UploadSettings.CacheControl">
+            <summary>
+            How objects should be cached
+            </summary>
+        </member>
+        <member name="T:Cake.AWS.S3.S3Settings">
+            <summary>
+            The settings to use with requests to Amazon S3
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Settings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.AWS.S3.S3Settings" /> class.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.WorkingDirectory">
+            <summary>
+            Gets or sets the working directory for the process to be started.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.AccessKey">
+            <summary>
+            The AWS Access Key ID
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.SecretKey">
+            <summary>
+            The AWS Secret Access Key.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.Region">
+            <summary>
+            The endpoints available to AWS clients.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.BucketName">
+            <summary>
+            Gets or sets the name of the S3 bucket.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.EncryptionMethod">
+            <summary>
+            The Server-side encryption algorithm to be used with the customer provided key.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.EncryptionKey">
+            <summary>
+            The base64-encoded encryption key for Amazon S3 to use to decrypt the object
+                Using the encryption key you provide as part of your request Amazon S3 manages
+                both the encryption, as it writes to disks, and decryption, when you access your
+                objects. Therefore, you don't need to maintain any data encryption code. The
+                only thing you do is manage the encryption keys you provide.
+                When you retrieve an object, you must provide the same encryption key as part
+                of your request. Amazon S3 first verifies the encryption key you provided matches,
+                and then decrypts the object before returning the object data to you.
+                Important: Amazon S3 does not store the encryption key you provide.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Settings.EncryptionKeyMD5">
+            <summary>
+            The MD5 of the customer encryption key. The MD5 is base 64 encoded. This field is optional, 
+            the SDK will calculate the MD5 if this is not set.
+            </summary>
+        </member>
+        <member name="T:Cake.AWS.S3.IS3Manager">
+            <summary>
+            Provides a high level utility for managing transfers to and from Amazon S3.
+            It makes extensive use of Amazon S3 multipart uploads to achieve enhanced throughput, 
+            performance, and reliability. When uploading large files by specifying file paths 
+            instead of a stream, TransferUtility uses multiple threads to upload multiple parts of 
+            a single upload at once. When dealing with large content sizes and high bandwidth, 
+            this can increase throughput significantly.
+            </summary>
+        </member>
+        <member name="P:Cake.AWS.S3.IS3Manager.LogProgress">
+            <summary>
+            If the manager should output progrtess events to the cake log
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.SyncUpload(Cake.Core.IO.FilePath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified directory to Amazon S3, checking the modified date of the local files with existing S3Objects and uploading them if its changes.
+            </summary>
+            <param name="filePath">The directory path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>The key that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.SyncUpload(Cake.Core.IO.DirectoryPath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified file to Amazon S3, checking the modified date of the local files with existing S3Objects and uploading them if its changes.
+            </summary>
+            <param name="dirPath">The file path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>A list of keys that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.SyncDownload(Cake.Core.IO.FilePath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified file from Amazon S3, checking the modified date of the local files with existing S3Objects and downloading them if its changed.
+            </summary>
+            <param name="filePath">The file path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>The key that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.SyncDownload(Cake.Core.IO.DirectoryPath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified directory from Amazon S3, checking the modified date of the local files with existing S3Objects and downloading them if its changed.
+            </summary>
+            <param name="dirPath">The directory path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>A list of keys that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.Upload(Cake.Core.IO.FilePath,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the specified file. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.Upload(System.IO.Stream,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the contents of the specified stream. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="stream">The stream to read to obtain the content to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.Download(Cake.Core.IO.FilePath,System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Downloads the content from Amazon S3 and writes it to the specified file.
+            </summary>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.Open(System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Opens a stream of the content from Amazon S3
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.GetBytes(System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Get the byte array of the content from Amazon S3
+            </summary>
+            <param name="key">The S3 object key.</param>
+            <param name="version">The S3 object version.</param>
+            <param name="settings">The download settings.</param>
+            <returns>A byte array.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.Delete(System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes the null version (if there is one) of an object and inserts a delete
+            marker, which becomes the latest version of the object. If there isn't a null
+            version, Amazon S3 does not remove any objects.
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to delete from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.DeleteAll(System.String,System.DateTimeOffset,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes all objects from the bucket
+            </summary>
+            <param name="prefix">Only delete objects that begin with the specified prefix.</param>
+            <param name="lastModified">Only delete objects that where modified prior to this date</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to delete from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.GetObjectMetaData(System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Retrieves object Metadata from Amazon S3.
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.GetObject(System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Retrieves object from Amazon S3.
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.GetObjects(System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Returns all the objects in a S3 bucket.
+            </summary>
+            <param name="prefix">Limits the response to keys that begin with the specified prefix.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.GenerateEncryptionKey(Cake.Core.IO.FilePath,System.Int32)">
+            <summary>
+            Generates a base64-encoded encryption key for Amazon S3 to use to encrypt / decrypt objects
+            </summary>
+            <param name="filePath">The file path to store the key in.</param>
+            <param name="size">The size in bits of the secret key used by the symmetric algorithm</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.GetPreSignedURL(System.String,System.String,System.DateTime,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Create a signed URL allowing access to a resource that would usually require authentication. cts
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="expires">The expiry date and time for the pre-signed url. </param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.IS3Manager.GetHash(Cake.Core.IO.IFile)">
+            <summary>
+            Gets the hash of a file
+            </summary>
+            <param name="file">The file to calculate the hash of</param>
+            <returns>The hash of a file.</returns>
+        </member>
+        <member name="T:Cake.AWS.S3.S3Manager">
+            <summary>
+            Provides a high level utility for managing transfers to and from Amazon S3.
+            It makes extensive use of Amazon S3 multipart uploads to achieve enhanced throughput, 
+            performance, and reliability. When uploading large files by specifying file paths 
+            instead of a stream, TransferUtility uses multiple threads to upload multiple parts of 
+            a single upload at once. When dealing with large content sizes and high bandwidth, 
+            this can increase throughput significantly.
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.Diagnostics.ICakeLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.AWS.S3.S3Manager" /> class.
+            </summary>
+            <param name="fileSystem">The file System.</param>
+            <param name="environment">The environment.</param>
+            <param name="log">The log.</param>
+        </member>
+        <member name="P:Cake.AWS.S3.S3Manager.LogProgress">
+            <summary>
+            If the manager should output progrtess events to the cake log
+            </summary>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.GetHash(Cake.Core.IO.IFile)">
+            <summary>
+            Gets the hash of a file
+            </summary>
+            <param name="file">The file to calculate the hash of</param>
+            <returns>The hash of a file.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.SyncUpload(Cake.Core.IO.DirectoryPath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified directory to Amazon S3, checking the modified date of the local files with existing S3Objects and uploading them if its changes.
+            </summary>
+            <param name="dirPath">The directory path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>A list of keys that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.SyncDownload(Cake.Core.IO.DirectoryPath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified directory from Amazon S3, checking the modified date of the local files with existing S3Objects and downloading them if its changed.
+            </summary>
+            <param name="dirPath">The directory path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>A list of keys that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.SyncUpload(Cake.Core.IO.FilePath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified file to Amazon S3, checking the modified date of the local files with existing S3Objects and uploading them if its changes.
+            </summary>
+            <param name="filePath">The file path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>The key that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.SyncDownload(Cake.Core.IO.FilePath,Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Syncs the specified file from Amazon S3, checking the modified date of the local files with existing S3Objects and downloading them if its changed.
+            </summary>
+            <param name="filePath">The file path to sync to S3</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to sync to Amazon S3.</param>
+            <returns>The key that require invalidating.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Upload(System.Collections.Generic.IList{Cake.AWS.S3.SyncPath},Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Uploads a collection of files to S3. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="paths">The paths to upload.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Upload(Cake.Core.IO.FilePath,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the specified file. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.UploadUnCompressed(Cake.Core.IO.FilePath,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the specified file. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.UploadCompressed(Cake.Core.IO.FilePath,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the specified file. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Upload(System.IO.Stream,System.String,Cake.AWS.S3.UploadSettings)">
+            <summary>
+            Uploads the contents of the specified stream. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="stream">The stream to read to obtain the content to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.UploadSettings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Download(System.Collections.Generic.IList{Cake.AWS.S3.SyncPath},Cake.AWS.S3.SyncSettings)">
+            <summary>
+            Downloads a collection of files from S3 and writes ithem to the specified files.
+            </summary>
+            <param name="paths">The paths to upload.</param>
+             <param name="settings">The <see cref="T:Cake.AWS.S3.SyncSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Download(Cake.Core.IO.FilePath,System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Downloads the content from Amazon S3 and writes it to the specified file.
+            </summary>
+            <param name="filePath">The file path of the file to upload.</param>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Open(System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Opens a stream of the content from Amazon S3
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be downloaded, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.DownloadSettings"/> required to download from Amazon S3.</param>
+            <returns>A stream.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.GetBytes(System.String,System.String,Cake.AWS.S3.DownloadSettings)">
+            <summary>
+            Get the byte array of the content from Amazon S3
+            </summary>
+            <param name="key">The S3 object key.</param>
+            <param name="version">The S3 object version.</param>
+            <param name="settings">The download settings.</param>
+            <returns>A byte array.</returns>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Delete(System.Collections.Generic.IList{System.String},Cake.AWS.S3.S3Settings)">
+            <summary>
+            Deletes a collection of files to S3. For large uploads, the file will be divided and uploaded in parts 
+            using Amazon S3's multipart API. The parts will be reassembled as one object in Amazon S3.
+            </summary>
+            <param name="keys">The set of keys under which the Amazon S3 object is stored.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to upload to Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.Delete(System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes the null version (if there is one) of an object and inserts a delete
+            marker, which becomes the latest version of the object. If there isn't a null
+            version, Amazon S3 does not remove any objects.
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.DeleteAll(System.String,System.DateTimeOffset,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Removes all objects from the bucket
+            </summary>
+            <param name="prefix">Only delete objects that begin with the specified prefix.</param>
+            <param name="lastModified">Only delete objects that where modified prior to this date.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to delete from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.GetObject(System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Retrieves object from Amazon S3.
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.GetObjectMetaData(System.String,System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Retrieves object Metadata from Amazon S3.
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.GetObjects(System.String,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Returns all the objects in a S3 bucket.
+            </summary>
+            <param name="prefix">Limits the response to keys that begin with the specified prefix.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.GenerateEncryptionKey(Cake.Core.IO.FilePath,System.Int32)">
+            <summary>
+            Generates a base64-encoded encryption key for Amazon S3 to use to encrypt / decrypt objects
+            </summary>
+            <param name="filePath">The file path to store the key in.</param>
+            <param name="size">The size in bits of the secret key used by the symmetric algorithm</param>
+        </member>
+        <member name="M:Cake.AWS.S3.S3Manager.GetPreSignedURL(System.String,System.String,System.DateTime,Cake.AWS.S3.S3Settings)">
+            <summary>
+            Create a signed URL allowing access to a resource that would usually require authentication. cts
+            </summary>
+            <param name="key">The key under which the Amazon S3 object is stored.</param>
+            <param name="version">The identifier for the specific version of the object to be deleted, if required.</param>
+            <param name="expires">The expiry date and time for the pre-signed url.</param>
+            <param name="settings">The <see cref="T:Cake.AWS.S3.S3Settings"/> required to download from Amazon S3.</param>
+        </member>
+        <member name="T:Cake.AWS.S3.NamespaceDoc">
+            <summary>
+            This namespace contains Amazon Simple Storage Service aliases and related members.
+            </summary>
+        </member>
+    </members>
+</doc>
