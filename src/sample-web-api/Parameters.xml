@@ -3,4 +3,7 @@
   <parameter name="LiamsVariable" description="Variable to show values being updated on deployment">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='LiamsVariable']/@value" />
   </parameter>
+  <parameter name="LiamsOtherVariable" description="Variable to show values being updated on deployment">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='LiamsOtherVariable']/@value" />
+  </parameter>
 </parameters>

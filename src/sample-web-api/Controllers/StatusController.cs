@@ -11,7 +11,8 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                LiamsVariable = ConfigurationManager.AppSettings["LiamsVariable"]
+                LiamsVariable = ConfigurationManager.AppSettings["LiamsVariable"],
+                LiamsOtherVariable = ConfigurationManager.AppSettings["LiamsOtherVariable"],
             };
         }
     }
