@@ -19,7 +19,7 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
   name        = "craig-sample-web-api"
-  description = "Craigs sample web api"
+  description = "craig-godden-payne"
 }
 
 module "beanstalk-web-app" {
