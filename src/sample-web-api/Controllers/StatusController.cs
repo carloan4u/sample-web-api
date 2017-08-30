@@ -12,7 +12,8 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                Environment = ConfigurationManager.AppSettings.Get("TestVariable")
+                Environment = ConfigurationManager.AppSettings.Get("TestVariable"),
+                Secure = ConfigurationManager.AppSettings.Get("SecureTestVariable")
             };
         }
     }

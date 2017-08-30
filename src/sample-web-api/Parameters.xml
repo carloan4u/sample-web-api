@@ -3,4 +3,7 @@
   <parameter name="TestVariable" description="Testy McTestface">
     <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@name='TestVariable']/@value" />
   </parameter>
+  <parameter name="SecureTestVariable" description="Secure Testy McTestface">
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@name='SecureTestVariable']/@value" />
+  </parameter>
 </parameters>

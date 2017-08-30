@@ -71,13 +71,21 @@ Task("Upload-Deployment-Scripts")
 Task("TransformQaConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  });
+    var secureConfigValue = EnvironmentVariable("QA-SecureTestVariable") ?? "UNKNOWN"
+
+    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  
+        { "parameters/setParameter[@name='SecureTestVariable']/@value", secureConfigValue }
+    });
 });
 
 Task("TransformProdConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {  });
+    var secureConfigValue = EnvironmentVariable("Live-SecureTestVariable") ?? "UNKNOWN"
+
+    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {  
+        { "parameters/setParameter[@name='SecureTestVariable']/@value", secureConfigValue }
+    });
 });
 
 //////////////////////////////////////////////////////////////////////
