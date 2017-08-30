@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System;
+using System.Configuration;
+using System.Net;
 using System.Web.Http;
 
 namespace sample_website.Controllers
@@ -9,7 +11,8 @@ namespace sample_website.Controllers
         {
             return new
             {
-                Status = HttpStatusCode.OK
+                Status = HttpStatusCode.OK,
+                Environment = ConfigurationManager.AppSettings.Get("TestVariable")
             };
         }
     }
