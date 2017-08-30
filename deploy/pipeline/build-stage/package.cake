@@ -1,63 +1,97 @@
 #addin "Cake.AWS.S3"
+#addin "MagicChunks"
 
-var projectZipLocation = @"C:\Code\sample-web-api\build\bin\_PublishedWebsites\sample-web-api_Package\";
+Environment.CurrentDirectory = Directory("../../../");
 
-var projectZipFile = "sample-web-api.zip";
-
-var configs = @"C:\Code\sample-web-api\deploy\config";
-
-var qaConfig = @"C:\Code\sample-web-api\deploy\config\set-parameters-qa.xml";
-var prodConfig = @"C:\Code\sample-web-api\deploy\config\set-parameters-prod.xml";
-
-var outputFolder = @"C:\Code\sample-web-api\deploy\all-the-things\";
+//////////////////////////////////////////////////////////////////////
+// ARGUMENTS
+//////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Default");
 
-Task("CreateDirectory")
+//////////////////////////////////////////////////////////////////////
+// PREPARATION
+//////////////////////////////////////////////////////////////////////
+
+var webProjectName = "sample-web-api";
+var appName = EnvironmentVariable("app_name") ?? webProjectName;
+var goPipelineLabel = EnvironmentVariable("GO_PIPELINE_LABEL") ?? "UNKNOWN";
+
+var buildDir = MakeAbsolute(Directory("build"));
+var webProjectBuildPath = string.Format("{0}/bin/_PublishedWebsites/{1}_Package/{1}.zip", buildDir, webProjectName);
+var packagingDir = string.Format("{0}/{1}", buildDir, "packaging");
+var s3Path = appName + "/" + goPipelineLabel;
+var applicationPackageName = string.Format("{0}_{1}.zip", appName, goPipelineLabel);
+
+//////////////////////////////////////////////////////////////////////
+// TASKS
+//////////////////////////////////////////////////////////////////////
+
+Task("Packaging-Preparation-Copy")
     .Does(() =>
 {
-    CreateDirectory(outputFolder);
+    CreateDirectory(packagingDir);
+    CopyFile(webProjectBuildPath, packagingDir + "/build.zip");
+    CopyDirectory("../scripts/deploy-scripts/.ebextensions", packagingDir + "/.ebextensions");
+    CopyDirectory("../scripts/deploy-scripts/eb-web-app-install-scripts", packagingDir);
+    CopyDirectory("./deploy/config/", packagingDir + "/config");
 });
 
-Task("CopyFiles")
-    .IsDependentOn("CreateDirectory")
+Task("Create-Deployment-Package")
+    .IsDependentOn("Packaging-Preparation-Copy")
     .Does(() =>
 {
-    CopyFile(projectZipLocation + projectZipFile, outputFolder + projectZipFile);
-
-    var files = GetFiles(configs + "/*.xml");
-    CopyFiles(files, outputFolder);
+    Zip(packagingDir + "/", buildDir + "/" + applicationPackageName);
 });
 
-Task("ZipFiles")
-    .IsDependentOn("CopyFiles")
+Task("Create-Deployment-Scripts-Package")
     .Does(() =>
 {
-    Zip(outputFolder, outputFolder + "packaging.zip");
+    Zip("deploy/terraform", buildDir + "/terraform.zip");
 });
 
-Task("PushToS3")
-    .IsDependentOn("ZipFiles")
+var s3UploadSettings = Context.CreateUploadSettings();
+s3UploadSettings.Region = RegionEndpoint.EUWest2;
+s3UploadSettings.BucketName = "zuto-build-artifacts";
+
+Task("Upload-Deployment-Package")
+    .IsDependentOn("Create-Deployment-Package")
     .Does(() =>
 {
-    var uploadSettings = Context.CreateUploadSettings();
-    uploadSettings.BucketName = "zuto-aws-workshop-build-artifacts";
-    uploadSettings.Region = RegionEndpoint.EUWest2;
-
-    S3Upload(outputFolder + "packaging.zip", "liams-package.zip", uploadSettings);
+    S3Upload(buildDir + "/" + applicationPackageName, s3Path + "/" + applicationPackageName, s3UploadSettings);
 });
 
-
-Task("CleanUp")
-    .IsDependentOn("PushToS3")
+Task("Upload-Deployment-Scripts")
+    .IsDependentOn("Create-Deployment-Scripts-Package")
     .Does(() =>
 {
-    DeleteDirectory(outputFolder, recursive:true);
+    S3Upload(buildDir + "/terraform.zip", s3Path + "/terraform.zip", s3UploadSettings);
 });
 
+Task("TransformQaConfig")
+    .Does(() =>
+{
+    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  });
+});
+
+Task("TransformProdConfig")
+    .Does(() =>
+{
+    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {  });
+});
+
+//////////////////////////////////////////////////////////////////////
+// TASK TARGETS
+//////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("CleanUp");
+    .IsDependentOn("TransformQaConfig")
+    .IsDependentOn("TransformProdConfig")
+    .IsDependentOn("Upload-Deployment-Package")
+    .IsDependentOn("Upload-Deployment-Scripts");
 
+//////////////////////////////////////////////////////////////////////
+// EXECUTION
+//////////////////////////////////////////////////////////////////////
 
 RunTarget(target);
