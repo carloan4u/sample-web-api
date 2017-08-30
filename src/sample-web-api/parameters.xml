@@ -3,4 +3,7 @@
   <parameter name="TestVariable" description="Variable to show values being updated on deployment">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='TestVariable']/@value" />
   </parameter>
+  <parameter name="SecondTestVariable" description="Variable to show values being updated on deployment">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SecondTestVariable']/@value" />
+  </parameter>
 </parameters>
