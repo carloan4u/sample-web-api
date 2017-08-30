@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "zuto-terraform-state-files"
-    key    = "services/routing-service-prod.tfstate"
+    key    = "services/pennington/prod.tfstate"
     region = "eu-west-2"
     acl    = "bucket-owner-full-control"
   }
@@ -18,7 +18,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "routing-service"
+  name        = "pennington"
   description = "Loan application routing service"
 }
 
@@ -27,11 +27,12 @@ module "beanstalk-web-app" {
   app_name          = "${aws_elastic_beanstalk_application.default.name}"
   instance_type     = "t2.medium"
   app_environment   = "${var.environment}"
-  asg_min_instances = 2
-  asg_max_instances = 3
+  asg_min_instances = 1
+  asg_max_instances = 2
   ec2_key           = "prod-ec2-applications"
   create_dns_record = true
-  owner_tag         = "Sales-Ops"
+  owner_tag         = "pennington"
+  healthcheck_url   = "/api/status"
 
   sns_topic = {
     name = "${aws_elastic_beanstalk_application.default.name}-${var.environment}"

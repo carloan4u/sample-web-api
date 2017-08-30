@@ -31,7 +31,7 @@ module "beanstalk-web-app" {
   asg_max_instances = 2
   ec2_key           = "qa-ec2-applications"
   create_dns_record = true
-  owner_tag         = "pennington",
+  owner_tag         = "pennington"
   healthcheck_url   = "/api/status"
 
   sns_topic = {
