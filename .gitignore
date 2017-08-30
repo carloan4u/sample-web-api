@@ -296,3 +296,4 @@ __pycache__/
 .terraform/
 /deploy/pipeline/tools/
 /deploy/pipeline/build-stage/tools/
+/TestResults.nunit.xml
