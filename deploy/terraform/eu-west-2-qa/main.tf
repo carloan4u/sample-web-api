@@ -9,7 +9,7 @@ variable = "environment" {
 terraform {
   backend "s3" {
     bucket = "zuto-terraform-state-files"
-    key    = "services/"${var.app_name}"/qa.tfstate"
+    key    = "services/${var.app_name}/qa.tfstate"
     region = "eu-west-2"
     acl    = "bucket-owner-full-control"
   }
