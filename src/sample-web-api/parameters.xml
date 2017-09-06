@@ -2,5 +2,6 @@
 <parameters>
     <parameter name="Environment" description="Variable to show values being updated on deployment">
         <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Environment']/@value" />
+        <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='AndyTest']/@value" />
     </parameter>
 </parameters>
