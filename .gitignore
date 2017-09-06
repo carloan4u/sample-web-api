@@ -294,3 +294,5 @@ __pycache__/
 
 # Module directory
 .terraform/
+build/
+TestResults.nunit.xml

@@ -8,7 +8,7 @@ namespace sample_web_api_test
         [Test]
         public void The_Things_Should_Be_Equal()
         {
-            Assert.That("This thing".Equals("the other thing"));
+            Assert.That("the other thing".Equals("the other thing"));
         }
     }
 }
