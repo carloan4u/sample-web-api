@@ -2,10 +2,12 @@
 
 <parameters>
 
-    <parameter name="TestVariable" description="Variable to show values being updated on deployment">
-
+    <parameter name="tomsParameter" description="Variable to show values being updated on deployment">
         <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='tomsParameter']/@value" />
-
+    </parameter>
+    
+    <parameter name="secureParam" description="Variable to show values being updated on deployment">
+        <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='secureParam']/@value" />
     </parameter>
 
 </parameters>

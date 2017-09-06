@@ -11,6 +11,7 @@ namespace sample_website.Controllers
             return new
             {
                 Content = ConfigurationSettings.AppSettings["tomsParameter"],
+                SecureContent = ConfigurationSettings.AppSettings["secureParam"],
                 Status = HttpStatusCode.OK
             };
         }
