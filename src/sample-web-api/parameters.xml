@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <parameters>
-    <parameter name="Environment" description="Variable to show values being updated on deployment">
-        <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Environment']/@value" />
-        <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='AndyTest']/@value" />
+    <parameter name="Unsecure" description="Variable to show values being updated on deployment">
+        <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Unsecure']/@value" />
+    </parameter>
+    <parameter name="Secure" description="Variable to show values being updated on deployment">
+        <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Secure']/@value" />
     </parameter>
 </parameters>
