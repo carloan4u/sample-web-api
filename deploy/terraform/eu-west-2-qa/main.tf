@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-variable = "app_name" {
-  default = "chris-mason-aws-app"
-}
-
 variable = "environment" {
   default = "qa"
 }
@@ -22,7 +18,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "${var.app_name}"
+  name        = "chris-mason-aws-app"
   description = "Loan application routing service"
 }
 
