@@ -1,18 +1,18 @@
+terraform {
+  backend "s3" {
+    bucket = "zuto-terraform-state-files"
+    key    = "services/chris-mason-aws-app/qa.tfstate"
+    region = "eu-west-2"
+    acl    = "bucket-owner-full-control"
+  }
+}
+
 variable = "app_name" {
   default = "chris-mason-aws-app"
 }
 
 variable = "environment" {
   default = "qa"
-}
-
-terraform {
-  backend "s3" {
-    bucket = "zuto-terraform-state-files"
-    key    = "services/${var.app_name}/qa.tfstate"
-    region = "eu-west-2"
-    acl    = "bucket-owner-full-control"
-  }
 }
 
 provider "aws" {
