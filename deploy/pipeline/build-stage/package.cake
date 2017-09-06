@@ -71,7 +71,10 @@ Task("Upload-Deployment-Scripts")
 Task("TransformQaConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  });
+    var nuffinWorksForMe = EnvironmentVariable("NuffinWorksForMe") ?? "UNKNOWN";
+    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection { 
+        { "parameters/setParameter[@name='NuffinWorksForMe']/@value", nuffinWorksForMe }
+     });
 });
 
 Task("TransformProdConfig")
