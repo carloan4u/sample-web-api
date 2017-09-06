@@ -28,7 +28,7 @@ module "beanstalk-web-app" {
   instance_type     = "t2.small"
   app_environment   = "${var.environment}"
   asg_min_instances = 1
-  asg_max_instances = 1
+  asg_max_instances = 2
   ec2_key           = "prod-ec2-applications"
   create_dns_record = true
   owner_tag         = "tommy"
