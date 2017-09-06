@@ -71,7 +71,7 @@ Task("Upload-Deployment-Scripts")
 Task("TransformQaConfig")
     .Does(() =>
 {
-    var whateveryouwantsecure = EnvironmentVariable("whateveryouwantsecure_qa") ?? UNKNOWN;
+    var whateveryouwantsecure = EnvironmentVariable("whateveryouwantsecure_qa") ?? "UNKNOWN";
     TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  
        { "parameters/setParameter[@name='whateveryouwantsecure']/@value", whateveryouwantsecure }
     });
