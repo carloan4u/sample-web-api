@@ -11,7 +11,8 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                Name = ConfigurationManager.AppSettings["TimsVar"]
+                Name = ConfigurationManager.AppSettings["TimsVar"],
+                SecureName = ConfigurationManager.AppSettings["SecureTimsVar"]
             };
         }
     }

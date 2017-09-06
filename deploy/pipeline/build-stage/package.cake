@@ -71,13 +71,19 @@ Task("Upload-Deployment-Scripts")
 Task("TransformQaConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  });
+    var timsSecureVariable = EnvironmentVariable("TIMS_LOVELY_SECURE_VARIABLE") ?? ":(";
+    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection { 
+        { "parameters/setParameter[@name='SecureTimsVar']/@value", timsSecureVariable }
+     });
 });
 
 Task("TransformProdConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {  });
+    var timsSecureVariable = EnvironmentVariable("TIMS_PRODDING_VARIABLE") ?? ":(";
+    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection { 
+        { "parameters/setParameter[@name='SecureTimsVar']/@value", timsSecureVariable }
+    });
 });
 
 //////////////////////////////////////////////////////////////////////

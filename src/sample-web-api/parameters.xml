@@ -3,4 +3,7 @@
 	<parameter name="TimsVar" description="Variable to show values being updated on deployment">
 		<parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='TimsVar']/@value" />
 	</parameter>
+  <parameter name="SecureTimsVar" description="Variable to show values being updated on deployment">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SecureTimsVar']/@value" />
+  </parameter>
 </parameters>
