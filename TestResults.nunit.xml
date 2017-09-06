@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="1" engine-version="3.7.0.0" clr-version="4.0.30319.42000" start-time="2017-09-06 10:34:13Z" end-time="2017-09-06 10:34:13Z" duration="0.665064">
+  <command-line><![CDATA["C:/Users/trevor.fawcett/Workshop/sample-web-api/deploy/pipeline/build-stage/tools/NUnit.ConsoleRunner/tools/nunit3-console.exe" "C:/Users/trevor.fawcett/Workshop/sample-web-api/build/bin/sample-web-api-test.dll" "--result=C:/Users/trevor.fawcett/Workshop/sample-web-api/TestResults.nunit.xml"]]></command-line>
+  <test-suite type="Assembly" id="0-1002" name="sample-web-api-test.dll" fullname="C:\Users\trevor.fawcett\Workshop\sample-web-api\build\bin\sample-web-api-test.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-06 10:34:13Z" end-time="2017-09-06 10:34:13Z" duration="0.050300" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+    <environment framework-version="3.7.1.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.14393.0" platform="Win32NT" cwd="C:\Users\trevor.fawcett\Workshop\sample-web-api" machine-name="DESKTOP-04O9C86" user="trevor.fawcett" user-domain="CL4U" culture="en-GB" uiculture="en-US" os-architecture="x64" />
+    <settings>
+      <setting name="DisposeRunners" value="True" />
+      <setting name="WorkDirectory" value="C:\Users\trevor.fawcett\Workshop\sample-web-api" />
+      <setting name="ImageRuntimeVersion" value="4.0.30319" />
+      <setting name="ImageTargetFrameworkName" value=".NETFramework,Version=v4.5.2" />
+      <setting name="ImageRequiresX86" value="False" />
+      <setting name="ImageRequiresDefaultAppDomainAssemblyResolver" value="False" />
+      <setting name="NumberOfTestWorkers" value="8" />
+    </settings>
+    <properties>
+      <property name="_PID" value="8908" />
+      <property name="_APPDOMAIN" value="domain-" />
+    </properties>
+    <test-suite type="TestSuite" id="0-1003" name="sample_web_api_test" fullname="sample_web_api_test" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-06 10:34:13Z" end-time="2017-09-06 10:34:13Z" duration="0.027500" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+      <test-suite type="TestFixture" id="0-1000" name="Tests" fullname="sample_web_api_test.Tests" classname="sample_web_api_test.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-06 10:34:13Z" end-time="2017-09-06 10:34:13Z" duration="0.023562" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+        <test-case id="0-1001" name="The_Things_Should_Be_Equal" fullname="sample_web_api_test.Tests.The_Things_Should_Be_Equal" methodname="The_Things_Should_Be_Equal" classname="sample_web_api_test.Tests" runstate="Runnable" seed="172597118" result="Passed" start-time="2017-09-06 10:34:13Z" end-time="2017-09-06 10:34:13Z" duration="0.009061" asserts="1" />
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
