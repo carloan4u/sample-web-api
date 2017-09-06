@@ -40,3 +40,21 @@ module "beanstalk-web-app" {
     protocol = "sqs"
   }
 }
+
+resource "aws_cloudwatch_metric_alarm" "test-alarm" {
+  count = "${length(module.beanstalk-web-app.instances)}"
+  alarm_name                = "terraform-tomsmcg-test-alarm${count.index + 1}"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "1"
+  metric_name               = "NetworkIn"
+  namespace                 = "AWS/EC2"
+  period                    = "300"
+  statistic                 = "Average"
+  threshold                 = "55000"
+  alarm_description         = "This metric monitors ec2 network in utilization"
+
+  dimensions {
+    InstanceId = "${element(module.beanstalk-web-app.instances, count.index)}"
+  }
+  alarm_actions     = ["arn:aws:sns:eu-west-2:276973094769:mcg-fun-app-alerts"]
+}
