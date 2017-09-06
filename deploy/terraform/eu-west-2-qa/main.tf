@@ -2,7 +2,7 @@ variable = "app_name" {
   default = "chris-mason-aws-app"
 }
 
-variable "environment" {
+variable = "environment" {
   default = "qa"
 }
 
