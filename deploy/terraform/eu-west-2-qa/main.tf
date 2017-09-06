@@ -56,5 +56,5 @@ resource "aws_cloudwatch_metric_alarm" "test-alarm" {
   dimensions {
     InstanceId = "${element(module.beanstalk-web-app.instances, count.index)}"
   }
-  alarm_actions     = ["arn:aws:sns:eu-west-2:276973094769:fawcett-qa"]
+  alarm_actions     = ["arn:aws:sns:eu-west-2:276973094769:fawcett-alerts"]
 }
