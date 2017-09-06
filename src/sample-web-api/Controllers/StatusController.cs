@@ -11,7 +11,8 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                WhatEverYouWant = ConfigurationManager.AppSettings.Get("whateveryouwant")
+                WhatEverYouWant = ConfigurationManager.AppSettings.Get("whateveryouwant"),
+                WhatEverYouWantSecure = ConfigurationManager.AppSettings.Get("whateveryouwantsecure"),
             };
         }
     }

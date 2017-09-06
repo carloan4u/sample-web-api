@@ -8,4 +8,10 @@
 
   </parameter>
 
+  <parameter name="whateveryouwantsecure" description="Variable to show values being updated on deployment">
+
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='whateveryouwantsecure']/@value" />
+
+  </parameter>
+
 </parameters>
