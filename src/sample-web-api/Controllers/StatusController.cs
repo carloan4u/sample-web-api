@@ -9,6 +9,7 @@ namespace sample_website.Controllers
         {
             return new
             {
+                Content = ConfigurationSettings.AppSettings["tomsParameter"],
                 Status = HttpStatusCode.OK
             };
         }
