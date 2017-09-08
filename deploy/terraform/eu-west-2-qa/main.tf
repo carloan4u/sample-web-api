@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "zuto-terraform-state-files"
-    key    = "services/sample-test-app/qa.tfstate"
+    key    = "services/fox-sample-test-app/qa.tfstate"
     region = "eu-west-2"
   }
 }
@@ -17,7 +17,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "sample-test-app"
+  name        = "fox-sample-test-app"
   description = "Sample Application used for AWS workshop"
 }
 
