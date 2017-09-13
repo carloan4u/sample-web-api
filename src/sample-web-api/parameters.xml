@@ -3,4 +3,7 @@
   <parameter name="ConfigItem" description="SampleConfigItem for workshop">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SampleConfigItem']/@value" />
   </parameter>
+  <parameter name="MyNewParameter" description="SampleConfigItem for workshop">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='NewParameter']/@value" />
+  </parameter>
 </parameters>
