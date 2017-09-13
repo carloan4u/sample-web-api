@@ -32,7 +32,8 @@ module "beanstalk-web-app" {
   ec2_key           = "prod-ec2-applications"
   create_dns_record = true
   owner_tag         = "Acquisition"
-
+  healthcheck_url   = "/api/status"
+  
   sns_topic = {
     name = "${aws_elastic_beanstalk_application.default.name}-${var.environment}"
     endpoint = "arn:aws:sqs:eu-west-2:${data.aws_caller_identity.current.account_id}:${aws_elastic_beanstalk_application.default.name}-${var.environment}"
