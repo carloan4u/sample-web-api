@@ -42,7 +42,7 @@ module "beanstalk-web-app" {
 }
 resource "aws_cloudwatch_metric_alarm" "mikey-test-alarm" {
   count = "${length(module.beanstalk-web-app.instances)}"
-  alarm_name                = "si-test-alarm${count.index + 1}"
+  alarm_name                = "mikey-test-alarm${count.index + 1}"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
   metric_name               = "NetworkIn"
