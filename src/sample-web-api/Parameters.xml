@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<parameters>
+  <parameter name="RoutingServiceDatabase" description="Entity Framework Connection string for the database">
+    <parameterValidation kind="AllowEmpty" />
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/connectionStrings/add[@name='RoutingServiceDatabase']/@connectionString" />
+  </parameter>
+  <parameter name="InstrumentationKey" description="ApplicationInsights Instrumentation Key">
+    <parameterEntry kind="XmlFile" scope="\\ApplicationInsights.config$" match="//*[local-name()='InstrumentationKey' and namespace-uri()='http://schemas.microsoft.com/ApplicationInsights/2013/Settings']/text()" />
+  </parameter>
+  <parameter name="Environment" description="Deployment Environment">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Environment']/@value" />
+  </parameter>
+  <parameter name="ExpSvcTestingLocally" description="Experimentation Service: Testing Locally">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='TestingLocally']/@value" />
+  </parameter>
+  <parameter name="ExpSvcAuthValue" description="Experimentation Service: Auth Value">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='ExperimentationAuthValue']/@value" />
+  </parameter>
+  <parameter name="ExpSvcApiUrl" description="Experimentation Service: API URL">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='ExperimentationApiUrl']/@value" />
+  </parameter>
+  <parameter name="Jobber" description="Jobber">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Jobber']/@value" />
+  </parameter>
+</parameters>
