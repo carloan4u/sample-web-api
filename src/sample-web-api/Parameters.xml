@@ -6,4 +6,7 @@
   <parameter name="SampleConfigItem" description="sample config">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SampleConfigItem']/@value" />
   </parameter>
+  <parameter name="SecureConfigItem" description="secure config">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SecureConfigItem']/@value" />
+  </parameter>
 </parameters>
