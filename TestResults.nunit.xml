@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="1" engine-version="3.7.0.0" clr-version="4.0.30319.42000" start-time="2017-09-13 10:23:54Z" end-time="2017-09-13 10:23:55Z" duration="1.114720">
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="1" engine-version="3.7.0.0" clr-version="4.0.30319.42000" start-time="2017-09-13 12:42:25Z" end-time="2017-09-13 12:42:26Z" duration="1.204220">
   <command-line><![CDATA["C:/src/sample-web-api/deploy/pipeline/build-stage/tools/NUnit.ConsoleRunner/tools/nunit3-console.exe" "C:/src/sample-web-api/build/bin/sample-web-api-test.dll" "--result=C:/src/sample-web-api/TestResults.nunit.xml"]]></command-line>
-  <test-suite type="Assembly" id="0-1002" name="sample-web-api-test.dll" fullname="C:\src\sample-web-api\build\bin\sample-web-api-test.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-13 10:23:55Z" end-time="2017-09-13 10:23:55Z" duration="0.091362" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+  <test-suite type="Assembly" id="0-1002" name="sample-web-api-test.dll" fullname="C:\src\sample-web-api\build\bin\sample-web-api-test.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-13 12:42:26Z" end-time="2017-09-13 12:42:26Z" duration="0.155161" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
     <environment framework-version="3.7.1.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.14393.0" platform="Win32NT" cwd="C:\src\sample-web-api" machine-name="LT-5WK0YF2" user="michael.dickens" user-domain="CL4U" culture="en-GB" uiculture="en-US" os-architecture="x64" />
     <settings>
       <setting name="DisposeRunners" value="True" />
@@ -13,12 +13,12 @@
       <setting name="NumberOfTestWorkers" value="8" />
     </settings>
     <properties>
-      <property name="_PID" value="29216" />
+      <property name="_PID" value="11032" />
       <property name="_APPDOMAIN" value="domain-" />
     </properties>
-    <test-suite type="TestSuite" id="0-1003" name="sample_web_api_test" fullname="sample_web_api_test" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-13 10:23:55Z" end-time="2017-09-13 10:23:55Z" duration="0.052889" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
-      <test-suite type="TestFixture" id="0-1000" name="Tests" fullname="sample_web_api_test.Tests" classname="sample_web_api_test.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-13 10:23:55Z" end-time="2017-09-13 10:23:55Z" duration="0.037983" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
-        <test-case id="0-1001" name="The_Things_Should_Be_Equal" fullname="sample_web_api_test.Tests.The_Things_Should_Be_Equal" methodname="The_Things_Should_Be_Equal" classname="sample_web_api_test.Tests" runstate="Runnable" seed="749075706" result="Passed" start-time="2017-09-13 10:23:55Z" end-time="2017-09-13 10:23:55Z" duration="0.008374" asserts="1" />
+    <test-suite type="TestSuite" id="0-1003" name="sample_web_api_test" fullname="sample_web_api_test" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-13 12:42:26Z" end-time="2017-09-13 12:42:26Z" duration="0.109481" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+      <test-suite type="TestFixture" id="0-1000" name="Tests" fullname="sample_web_api_test.Tests" classname="sample_web_api_test.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2017-09-13 12:42:26Z" end-time="2017-09-13 12:42:26Z" duration="0.077470" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+        <test-case id="0-1001" name="The_Things_Should_Be_Equal" fullname="sample_web_api_test.Tests.The_Things_Should_Be_Equal" methodname="The_Things_Should_Be_Equal" classname="sample_web_api_test.Tests" runstate="Runnable" seed="1353234642" result="Passed" start-time="2017-09-13 12:42:26Z" end-time="2017-09-13 12:42:26Z" duration="0.025933" asserts="1" />
       </test-suite>
     </test-suite>
   </test-suite>

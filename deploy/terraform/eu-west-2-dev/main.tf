@@ -17,7 +17,7 @@ provider "aws" {
 }
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "mikey-app-service"
+  name        = "mikey-app"
   description = "Mikey App Service"
 }
 

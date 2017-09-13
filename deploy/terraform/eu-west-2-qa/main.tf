@@ -18,7 +18,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "mikey-app-service"
+  name        = "mikey-app"
   description = "Mikey App Service"
 }
 
