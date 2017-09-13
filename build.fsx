@@ -44,8 +44,7 @@ Target.Create "Build" <| fun _ ->
 
 open Fake.DotNet.Testing.NUnit3
 Target.Create "Run-Unit-Tests" <| fun _ ->
-    NUnit3 
-    printfn "Run-Unit-Tests"
+    !! (buildDir </> "*-test.dll") |> NUnit3 id
 
 Target.Create "Default" <| fun _ ->
     printfn "Default"

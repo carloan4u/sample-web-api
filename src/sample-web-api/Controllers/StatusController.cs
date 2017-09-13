@@ -11,7 +11,8 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                Jobber = ConfigurationManager.AppSettings["Jobber"]
+                Jobber = ConfigurationManager.AppSettings["Jobber"],
+                SecretJobber = ConfigurationManager.AppSettings["SecretJobber"]
             };
         }
     }

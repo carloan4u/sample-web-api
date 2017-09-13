@@ -71,13 +71,19 @@ Task("Upload-Deployment-Scripts")
 Task("TransformQaConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {  });
+    var secretConfigItem = EnvironmentVariable("QA-SecretJobber") ??  "UNKNOWN";
+    TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {
+        { "parameters/setParameter[@name='SecretJobber']/@value", secretConfigItem }
+    });
 });
 
 Task("TransformProdConfig")
     .Does(() =>
 {
-    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {  });
+    var secretConfigItem = EnvironmentVariable("PROD-SecretJobber") ??  "UNKNOWN";
+    TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {
+        { "parameters/setParameter[@name='SecretJobber']/@value", secretConfigItem }
+    });
 });
 
 //////////////////////////////////////////////////////////////////////

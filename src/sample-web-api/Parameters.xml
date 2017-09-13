@@ -22,4 +22,7 @@
   <parameter name="Jobber" description="Jobber">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='Jobber']/@value" />
   </parameter>
+  <parameter name="SecretJobber" description="Secret Jobber">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SecretJobber']/@value" />
+  </parameter>
 </parameters>
