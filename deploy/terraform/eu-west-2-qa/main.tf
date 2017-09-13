@@ -50,7 +50,7 @@ resource "aws_cloudwatch_metric_alarm" "dc-test-alarm" {
   namespace                 = "AWS/EC2"
   period                    = "300"
   statistic                 = "Average"
-  threshold                 = "2500000"
+  threshold                 = "55000"
   alarm_description         = "This metric monitors ec2 network in utilization"
 
   dimensions {
