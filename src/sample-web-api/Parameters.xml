@@ -3,4 +3,7 @@
   <parameter name="DCParam" description="Experimentation Service: API URL">
     <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='DCParam']/@value" />
   </parameter>
+  <parameter name="DCSecureParam" description="Experimentation Service: API URL">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SecretParam']/@value" />
+  </parameter>
 </parameters>

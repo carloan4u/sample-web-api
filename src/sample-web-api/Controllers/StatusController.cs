@@ -12,7 +12,8 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                SampleConfiguration = ConfigurationManager.AppSettings["DCParam"]
+                SampleConfiguration = ConfigurationManager.AppSettings["DCParam"],
+                SecureParam = ConfigurationManager.AppSettings["SecretParam"]
             };
         }
     }
