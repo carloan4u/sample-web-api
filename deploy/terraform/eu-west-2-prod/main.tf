@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "zuto-terraform-state-files"
-    key    = "services/dc-workshop-app/qa.tfstate"
+    key    = "services/dc-workshop-app/prod.tfstate"
     region = "eu-west-2"
     acl    = "bucket-owner-full-control"
   }
