@@ -9,7 +9,8 @@ namespace sample_website.Controllers
         {
             return new
             {
-                Status = HttpStatusCode.OK
+                Status = HttpStatusCode.OK,
+                SampleConfigItem = ConfigurationManager.AppSettings["SampleConfigItem"]
             };
         }
     }
