@@ -11,7 +11,9 @@ namespace sample_website.Controllers
             return new
             {
                 Status = HttpStatusCode.OK,
-                Environment = ConfigurationManager.AppSettings["Environment"]
+                Environment = ConfigurationManager.AppSettings["Environment"],
+                SampleConfig = ConfigurationManager.AppSettings["SampleConfigItem"],
+                SecureConfig = ConfigurationManager.AppSettings["SecretConfigItem"]
             };
         }
     }
