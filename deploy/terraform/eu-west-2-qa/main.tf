@@ -29,7 +29,7 @@ module "beanstalk-web-app" {
   app_environment   = "${var.environment}"
   asg_min_instances = 2
   asg_max_instances = 2
-  ec2_key           = "qa-ec2-applications"
+  ec2_key           = "${var.environment}-ec2-applications"
   create_dns_record = true
   owner_tag         = "Acquisition"
   healthcheck_url   = "/api/status"
