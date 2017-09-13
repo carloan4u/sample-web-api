@@ -2,4 +2,5 @@
 <parameters>
   <setParameter name="Environment" value="QA" />
   <setParameter name="InstrumentationKey" value="6be68857-6611-4c1f-8daf-b0d747f086a0" />
+  <setParameter name="firstParam" value="NewValueFromSetParameters">
 </parameters>
