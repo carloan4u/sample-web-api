@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "zuto-terraform-state-files"
-    key    = "services/routing-service-prod.tfstate"
+    key    = "services/renz-super-duper-app/prod.tfstate"
     region = "eu-west-2"
     acl    = "bucket-owner-full-control"
   }
@@ -18,8 +18,8 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_elastic_beanstalk_application" "default" {
-  name        = "routing-service"
-  description = "Loan application routing service"
+  name        = "renz-super-duper-app"
+  description = "This is my first ever beanstalk application. Woop woop."
 }
 
 module "beanstalk-web-app" {
@@ -31,7 +31,7 @@ module "beanstalk-web-app" {
   asg_max_instances = 3
   ec2_key           = "prod-ec2-applications"
   create_dns_record = true
-  owner_tag         = "Sales-Ops"
+  owner_tag         = "Acquisition"
 
   sns_topic = {
     name = "${aws_elastic_beanstalk_application.default.name}-${var.environment}"
