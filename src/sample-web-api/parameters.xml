@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<parameters>
+  <parameter name="ConfigItem" description="SampleConfigItem for workshop">
+    <parameterEntry kind="XmlFile" scope="\\Web.config$" match="/configuration/appSettings/add[@key='SampleConfigItem']/@value" />
+  </parameter>
+</parameters>
