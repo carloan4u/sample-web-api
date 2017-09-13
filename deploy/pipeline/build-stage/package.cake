@@ -74,7 +74,8 @@ Task("TransformQaConfig")
     var secretConfigItem = EnvironmentVariable("QA-secretConfigItem") ??  "UNKNOWN";
 
     TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection 
-    { "parameters/setParameter[@name='DCSecureParam']/@value", secretConfigItem });
+    { "parameters/setParameter[@name='DCSecureParam']/@value", secretConfigItem }
+    });
 });
 
 Task("TransformProdConfig")
