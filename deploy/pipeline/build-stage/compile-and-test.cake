@@ -53,7 +53,7 @@ Task("Run-Unit-Tests")
     .Does(() =>
 {
    NUnit3(buildBinDir +  "/*-test.dll", new NUnit3Settings {
-        Results = "TestResults.nunit.xml"
+        Results = new[] { new NUnit3Result { FileName = "TestResults.nunit.xml" } }
       });
 });
 
