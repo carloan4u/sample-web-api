@@ -17,6 +17,14 @@ var webProjectName = "sample-web-api";
 var appName = EnvironmentVariable("app_name") ?? webProjectName;
 var goPipelineLabel = EnvironmentVariable("GO_PIPELINE_LABEL") ?? "UNKNOWN";
 
+var buildArtifactsBucket = EnvironmentVariable("BUILD_ARTIFACTS_BUCKET") ?? "";
+
+if (buildArtifactsBucket == "") {
+  Console.WriteLine("You must set a 'BUILD_ARTIFACTS_BUCKET' environment variable");
+  Console.WriteLine("For local development this should be 'zuto-build-artifacts-dev'");
+  throw new Exception("You must set a 'BUILD_ARTIFACTS_BUCKET' environment variable");
+}
+
 var buildDir = MakeAbsolute(Directory("build"));
 var webProjectBuildPath = string.Format("{0}/bin/_PublishedWebsites/{1}_Package/{1}.zip", buildDir, webProjectName);
 var packagingDir = string.Format("{0}/{1}", buildDir, "packaging");
@@ -32,8 +40,8 @@ Task("Packaging-Preparation-Copy")
 {
     CreateDirectory(packagingDir);
     CopyFile(webProjectBuildPath, packagingDir + "/build.zip");
-    CopyDirectory("../scripts/deploy-scripts/.ebextensions", packagingDir + "/.ebextensions");
-    CopyDirectory("../scripts/deploy-scripts/eb-web-app-install-scripts", packagingDir);
+    CopyDirectory("../eb-deploy-scripts/deploy-scripts/.ebextensions", packagingDir + "/.ebextensions");
+    CopyDirectory("../eb-deploy-scripts/deploy-scripts/eb-web-app-install-scripts", packagingDir);
     CopyDirectory("./deploy/config/", packagingDir + "/config");
 });
 
@@ -52,7 +60,7 @@ Task("Create-Deployment-Scripts-Package")
 
 var s3UploadSettings = Context.CreateUploadSettings();
 s3UploadSettings.Region = RegionEndpoint.EUWest2;
-s3UploadSettings.BucketName = "zuto-build-artifacts";
+s3UploadSettings.BucketName = buildArtifactsBucket;
 
 Task("Upload-Deployment-Package")
     .IsDependentOn("Create-Deployment-Package")
