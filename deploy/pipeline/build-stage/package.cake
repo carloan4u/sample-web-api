@@ -48,7 +48,6 @@ Task("Create-Deployment-Scripts-Package")
     .Does(() =>
 {
     Zip("deploy/terraform", buildDir + "/terraform.zip");
-    Zip("database", buildDir + "/database.zip");
 });
 
 var s3UploadSettings = Context.CreateUploadSettings();
@@ -67,27 +66,26 @@ Task("Upload-Deployment-Scripts")
     .Does(() =>
 {
     S3Upload(buildDir + "/terraform.zip", s3Path + "/terraform.zip", s3UploadSettings);
-    S3Upload(buildDir + "/database.zip", s3Path + "/database.zip", s3UploadSettings);
 });
 
 Task("TransformQaConfig")
     .Does(() =>
 {
-    var qaDBConnString = EnvironmentVariable("QA_DB_CONN_STRING") ??  "UNKNOWN";
+    var secretConfigItem = EnvironmentVariable("QA-secretConfigItem") ??  "UNKNOWN";
 
     TransformConfig(@"./deploy/config/set-parameters-qa.xml", new TransformationCollection {
-        { "parameters/setParameter[@name='RoutingServiceDatabase']/@value", qaDBConnString }
+        { "parameters/setParameter[@name='SecretConfigItem']/@value", secretConfigItem }
     });
 });
 
 Task("TransformProdConfig")
     .Does(() =>
 {
-    var liveDBConnString = EnvironmentVariable("LIVE_DB_CONN_STRING") ??  "UNKNOWN";
+    var secretConfigItem = EnvironmentVariable("Live-secretConfigItem") ??  "UNKNOWN";
 
     TransformConfig(@"./deploy/config/set-parameters-prod.xml", new TransformationCollection {
-        { "parameters/setParameter[@name='RoutingServiceDatabase']/@value", liveDBConnString }
-    });
+      { "parameters/setParameter[@name='SecretConfigItem']/@value", secretConfigItem }
+  });
 });
 
 //////////////////////////////////////////////////////////////////////

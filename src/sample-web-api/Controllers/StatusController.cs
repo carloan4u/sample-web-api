@@ -10,7 +10,9 @@ namespace sample_website.Controllers
         {
             return new
             {
-                Status = ConfigurationManager.AppSettings["Environment"]
+                Status = ConfigurationManager.AppSettings["Environment"],
+                SampleConfigItem = ConfigurationManager.AppSettings["SampleConfigItem"],
+                SecretConfigItem = ConfigurationManager.AppSettings["SecretConfigItem"]
             };
         }
     }
