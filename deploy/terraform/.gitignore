@@ -30,6 +30,6 @@ website/vendor
 !command/test-fixtures/**/*.tfstate
 !command/test-fixtures/**/.terraform/
 
-deploy/tools/*
-!deploy/tools/packages.config
+deploy/pipelinetools/*
+!deploy/pipeline/tools/packages.config
 deploy/pipeline/build-stage/tools
