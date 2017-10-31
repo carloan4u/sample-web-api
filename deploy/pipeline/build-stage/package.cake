@@ -1,5 +1,5 @@
-#addin "Cake.AWS.S3"
-#addin "MagicChunks"
+#addin nuget:?package=Cake.AWS.S3&version=0.4.6
+#addin nuget:?package=MagicChunks&version=1.2.0.58
 
 Environment.CurrentDirectory = Directory("../../../");
 
