@@ -23,7 +23,7 @@ resource "aws_elastic_beanstalk_application" "default" {
 }
 
 module "beanstalk-web-app" {
-  source            = "git@github.com:carloan4u/terraform-aws-beanstalk-environment-module.git?ref=v1.3.0"
+  source            = "git@github.com:carloan4u/terraform-aws-beanstalk-environment-module.git?ref=v1.3.1"
   app_name          = "${aws_elastic_beanstalk_application.default.name}"
   instance_type     = "t2.small"
   app_environment   = "${var.environment}"
@@ -38,5 +38,11 @@ module "beanstalk-web-app" {
     name = "${aws_elastic_beanstalk_application.default.name}-${var.environment}"
     endpoint = "arn:aws:sqs:eu-west-2:${data.aws_caller_identity.current.account_id}:${aws_elastic_beanstalk_application.default.name}-${var.environment}"
     protocol = "sqs"
+  }
+
+  cloudwatch = {
+    error_threshold_5xx = 100 //Optional
+    alarm_topic = "cloudwatch-sns-topic" //Optional
+    alarm_evaluation_period_seconds = 60 //Optional
   }
 }
