@@ -41,8 +41,10 @@ module "beanstalk-web-app" {
   }
 
   cloudwatch = {
-    error_threshold_5xx             = 100                    //Optional
+    error_threshold_5xx             = 10                    //Optional
     alarm_topic                     = "cloudwatch-sns-topic" //Optional
     alarm_evaluation_period_seconds = 60                     //Optional
   }
+
+  //Hit /api/values to simulate 500 error within this application
 }
