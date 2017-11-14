@@ -12,7 +12,7 @@ namespace sample_website.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2", "value3", "value4" };
+            throw new Exception();
         }
 
         // GET api/values/5
