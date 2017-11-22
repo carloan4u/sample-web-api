@@ -23,7 +23,8 @@ resource "aws_elastic_beanstalk_application" "default" {
 }
 
 module "beanstalk-web-app" {
-  source                    = "git@github.com:carloan4u/terraform-aws-beanstalk-environment-module.git?ref=v1.3.1"
+  source                    = "git@github.com:carloan4u/terraform-aws-beanstalk-environment-module.git"
+  version                   = "< 1.4.0"
   app_name                  = "${aws_elastic_beanstalk_application.default.name}"
   instance_type             = "t2.small"
   app_environment           = "${var.environment}"
@@ -41,7 +42,7 @@ module "beanstalk-web-app" {
   }
 
   cloudwatch = {
-    error_threshold_5xx             = 10                    //Optional
+    error_threshold_5xx             = 10                     //Optional
     alarm_topic                     = "cloudwatch-sns-topic" //Optional
     alarm_evaluation_period_seconds = 60                     //Optional
   }
