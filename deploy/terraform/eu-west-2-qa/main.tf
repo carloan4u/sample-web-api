@@ -24,7 +24,7 @@ resource "aws_elastic_beanstalk_application" "default" {
 
 module "beanstalk-web-app" {
   source                    = "git@github.com:carloan4u/terraform-aws-beanstalk-environment-module.git"
-  version                   = "< 1.4.0"
+  version                   = "~> 1.3"
   app_name                  = "${aws_elastic_beanstalk_application.default.name}"
   instance_type             = "t2.small"
   app_environment           = "${var.environment}"
