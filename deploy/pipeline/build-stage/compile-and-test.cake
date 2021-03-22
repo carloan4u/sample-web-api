@@ -1,4 +1,5 @@
 #tool nuget:?package=NUnit.ConsoleRunner
+#addin nuget:?package=Cake.Git
 
 Environment.CurrentDirectory = Directory("../../../");
 
