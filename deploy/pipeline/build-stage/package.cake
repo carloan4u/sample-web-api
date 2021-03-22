@@ -42,8 +42,8 @@ Task("Packaging-Preparation-Copy")
 {
     CreateDirectory(packagingDir);
     CopyFile(webProjectBuildPath, packagingDir + "/build.zip");
-    CopyDirectory("../eb-deploy-scripts/deploy-scripts/.ebextensions", packagingDir + "/.ebextensions");
-    CopyDirectory("../eb-deploy-scripts/deploy-scripts/eb-web-app-install-scripts", packagingDir);
+    CopyDirectory("../scripts/deploy-scripts/.ebextensions", packagingDir + "/.ebextensions");
+    CopyDirectory("../scripts/deploy-scripts/eb-web-app-install-scripts", packagingDir);
     CopyDirectory("./deploy/config/", packagingDir + "/config");
 });
 
