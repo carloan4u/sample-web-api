@@ -32,7 +32,7 @@ variable "asg_max_instances" {
 
 
 module "beanstalk-web-app" {
-  source                    = "git@github.com:carloan4u/terraform-aws-beanstalk-environment-module.git?ref=v4.2.1"
+  source                    = "git@github.com:carloan4u/terraform-aws-beanstalk-environment-module.git?ref=v4.2.2"
   app_name                  = aws_elastic_beanstalk_application.default.name
   instance_type             = var.instance_type
   app_environment           = terraform.workspace
